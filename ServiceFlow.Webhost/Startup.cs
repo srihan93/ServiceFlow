@@ -29,7 +29,7 @@ namespace ServiceFlow.Webhost
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ServiceFlowDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("ServiceFlowDbConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("ServiceFlowDbConnection"), x => x.MigrationsAssembly("ServiceFlow.Webhost")));
 
             services.AddControllers().AddFluentValidation();
             services.AddSwaggerGen(c =>
