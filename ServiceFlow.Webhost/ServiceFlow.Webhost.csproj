@@ -19,4 +19,8 @@
     <ProjectReference Include="..\ServiceFlow.Domain\ServiceFlow.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

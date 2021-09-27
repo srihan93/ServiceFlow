@@ -12,6 +12,7 @@ using ServiceFlow.DataAccess.AppDbContext;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace ServiceFlow.Webhost
@@ -34,7 +35,7 @@ namespace ServiceFlow.Webhost
             services.AddControllers().AddFluentValidation();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ServiceFlow.Webhost", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ServiceFlow.Webhost", Version = this.GetType().Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion });
             });
         }
 
