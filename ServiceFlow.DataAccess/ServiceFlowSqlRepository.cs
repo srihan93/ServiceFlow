@@ -33,7 +33,7 @@ namespace ServiceFlow.DataAccess
 
         public IEnumerable<T> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbContext.Set<T>().ToList();
         }
 
         public T GetById(int id)
