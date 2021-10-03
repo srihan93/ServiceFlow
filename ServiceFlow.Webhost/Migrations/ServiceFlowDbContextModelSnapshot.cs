@@ -8,7 +8,7 @@ using ServiceFlow.DataAccess.AppDbContext;
 
 namespace ServiceFlow.Webhost.Migrations
 {
-    [DbContext(typeof(ServiceFlowDbContext))]
+    [DbContext(typeof(AppDbContext))]
     partial class ServiceFlowDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

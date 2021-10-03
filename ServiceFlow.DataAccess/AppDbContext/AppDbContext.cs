@@ -2,9 +2,9 @@
 
 namespace ServiceFlow.DataAccess.AppDbContext
 {
-    public class ServiceFlowDbContext : DbContext
+    public class AppDbContext : DbContext
     {
-        public ServiceFlowDbContext(DbContextOptions<ServiceFlowDbContext> options) : base(options)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
 

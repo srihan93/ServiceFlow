@@ -9,7 +9,7 @@ using ServiceFlow.DataAccess.AppDbContext;
 
 namespace ServiceFlow.Webhost.Migrations
 {
-    [DbContext(typeof(ServiceFlowDbContext))]
+    [DbContext(typeof(AppDbContext))]
     [Migration("20210927110601_InitialMigration")]
     partial class InitialMigration
     {

@@ -7,11 +7,11 @@ using System.Linq.Expressions;
 
 namespace ServiceFlow.DataAccess
 {
-    public class ServiceFlowSqlRepository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class
     {
         protected readonly DbContext _dbContext;
 
-        public ServiceFlowSqlRepository(DbContext dbContext)
+        public Repository(DbContext dbContext)
         {
             _dbContext = dbContext;
         }
