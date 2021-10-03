@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using ServiceFlow.Common.DataModels;
 
 namespace ServiceFlow.DataAccess
 {

@@ -1,13 +1,13 @@
 ﻿using ServiceFlow.DataAccess;
-using ServiceFlow.DataAccess.AppDbContext;
+using ServiceFlow.Common.DataModels;
 
 namespace DataAccess.EFCore.UnitOfWorks
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly AppDbContext _context;
+        private readonly ApplicationContext _context;
 
-        public UnitOfWork(AppDbContext context)
+        public UnitOfWork(ApplicationContext context)
         {
             _context = context;
             Workflow = new WorkflowRepository(_context);
@@ -21,7 +21,7 @@ namespace DataAccess.EFCore.UnitOfWorks
             wf.Id = new System.Guid();
             wf.DisplayName = DisplayName;
             wf.Name = Name;
-            return Workflow.AddWorkflow()
+            return null;
         }
 
         public int Complete()

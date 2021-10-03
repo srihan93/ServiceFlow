@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ServiceFlow.DataAccess.AppDbContext;
+using ServiceFlow.DataAccess;
 
 namespace ServiceFlow.Webhost.Migrations
 {
-    [DbContext(typeof(AppDbContext))]
+    [DbContext(typeof(ApplicationContext))]
     [Migration("20210927110601_InitialMigration")]
     partial class InitialMigration
     {

@@ -32,7 +32,7 @@ namespace ServiceFlow.DataAccess
 
         public IEnumerable<T> GetAll()
         {
-            return _dbContext.Set<T>().ToList();
+            return _context.Set<T>().ToList();
         }
 
         public T GetById(int id)
@@ -47,7 +47,7 @@ namespace ServiceFlow.DataAccess
 
         public bool Insert(T obj)
         {
-            _dbContext.Set<T>().Add(obj);
+            _context.Set<T>().Add(obj);
             return true;
         }
 

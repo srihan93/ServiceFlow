@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ServiceFlow.Common.DataModels;
 
 namespace ServiceFlow.DataAccess
 {

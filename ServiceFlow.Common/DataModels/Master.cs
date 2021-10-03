@@ -2,7 +2,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ServiceFlow.DataAccess
+namespace ServiceFlow.Common.DataModels
 {
     [Table("Mtr_Status")]
     public class Status
@@ -38,7 +38,6 @@ namespace ServiceFlow.DataAccess
         public bool IsActive { get; set; }
     }
 
-    [Table("Mtr_Workflow")]
     public class Workflow
     {
         public Guid Id { get; set; }
