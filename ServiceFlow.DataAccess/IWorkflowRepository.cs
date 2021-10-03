@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ServiceFlow.DataAccess
 {
@@ -10,6 +6,6 @@ namespace ServiceFlow.DataAccess
     {
         IEnumerable<Workflow> GetAllWorkflows();
 
-        Workflow AddWorkflow(string Name, string DisplayName);
+        Workflow AddWorkflow(Workflow wf);
     }
 }

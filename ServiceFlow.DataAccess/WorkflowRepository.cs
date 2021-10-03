@@ -1,26 +1,24 @@
-﻿using ServiceFlow.DataAccess.AppDbContext;
+﻿using ServiceFlow.DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceFlow.DataAccess
 {
-    internal class WorkflowRepository : Repository<Workflow>, IWorkflowRepository
+    public class WorkflowRepository : Repository<Workflow>, IWorkflowRepository
     {
-        public WorkflowRepository(AppDbContext.AppDbContext context)
+        public WorkflowRepository(ApplicationContext context) : base(context)
         {
         }
 
-        public Workflow AddWorkflow(string Name, string DisplayName)
+        public Workflow AddWorkflow(Workflow wf)
         {
-            throw new NotImplementedException();
+            return _context.Workflow.ToList().FirstOrDefault();
         }
 
         public IEnumerable<Workflow> GetAllWorkflows()
         {
-            throw new NotImplementedException();
+            return _context.Workflow.ToList();
         }
     }
 }

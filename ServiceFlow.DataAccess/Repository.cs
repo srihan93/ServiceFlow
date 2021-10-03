@@ -8,16 +8,16 @@ namespace ServiceFlow.DataAccess
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        protected readonly DbContext _dbContext;
+        protected readonly ApplicationContext _context;
 
-        public Repository(DbContext dbContext)
+        public Repository(ApplicationContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
 
         public int Count()
         {
-            throw new NotImplementedException();
+            return 1;
         }
 
         public bool Delete(int id)
@@ -47,7 +47,8 @@ namespace ServiceFlow.DataAccess
 
         public bool Insert(T obj)
         {
-            throw new NotImplementedException();
+            _dbContext.Set<T>().Add(obj);
+            return true;
         }
 
         public void Save()

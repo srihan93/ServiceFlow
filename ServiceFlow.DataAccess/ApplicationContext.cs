@@ -1,12 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace ServiceFlow.DataAccess
 {
-    class ApplicationContext
+    public class ApplicationContext : DbContext
     {
+        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
+        {
+        }
+
+        public DbSet<Status> Status { get; set; }
+        public DbSet<Reason> Reason { get; set; }
+        public DbSet<ReasonInStatus> ReasonInStatus { get; set; }
+        public DbSet<Workflow> Workflow { get; set; }
+        public DbSet<WorkflowConfiguration> WorkflowConfiguration { get; set; }
+        public DbSet<Attribute> Attribute { get; set; }
     }
 }
