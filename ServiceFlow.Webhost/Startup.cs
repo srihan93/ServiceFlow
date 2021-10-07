@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using ServiceFlow.DataAccess;
+using ServiceFlow.DataAccess.OldDataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,8 @@ namespace ServiceFlow.Webhost
         {
             services.AddDbContext<ApplicationContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ServiceFlowDbConnection"), x => x.MigrationsAssembly("ServiceFlow.Webhost")));
+
+            services.AddTransient<IDataService, DataService>();
 
             services.AddControllers().AddFluentValidation();
             services.AddSwaggerGen(c =>

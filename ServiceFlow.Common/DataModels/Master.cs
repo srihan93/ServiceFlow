@@ -38,6 +38,7 @@ namespace ServiceFlow.Common.DataModels
         public bool IsActive { get; set; }
     }
 
+    [Table("Mtr_Workflow")]
     public class Workflow
     {
         public Guid Id { get; set; }
