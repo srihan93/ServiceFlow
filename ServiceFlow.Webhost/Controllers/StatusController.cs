@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ServiceFlow.Common.DataModels;
+using ServiceFlow.DataAccess.OldDataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,13 @@ namespace ServiceFlow.Webhost.Controllers
     [ApiController]
     public class StatusController : ControllerBase
     {
+        private IDataService _dataService;
+
+        public StatusController(IDataService dataService)
+        {
+            _dataService = dataService;
+        }
+
         [HttpPost]
         [RouteAttribute("api/status")]
         public IActionResult AddStatus()
@@ -18,8 +27,8 @@ namespace ServiceFlow.Webhost.Controllers
         }
 
         [HttpPost]
-        [RouteAttribute("api/reason")]
-        public IActionResult AddReason()
+        [RouteAttribute("api/reason/{reasonId}")]
+        public IActionResult AddReason(Guid reasonId, Reason reason)
         {
             return null;
         }

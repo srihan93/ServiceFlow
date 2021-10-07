@@ -7,5 +7,8 @@ namespace ServiceFlow.Webhost.ServiceModels
 {
     public class Attribute
     {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public string DisplayName { get; set; }
     }
 }

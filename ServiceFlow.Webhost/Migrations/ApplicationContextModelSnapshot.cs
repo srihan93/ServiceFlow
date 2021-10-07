@@ -3,17 +3,15 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ServiceFlow.DataAccess;
 
 namespace ServiceFlow.Webhost.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20210927110601_InitialMigration")]
-    partial class InitialMigration
+    partial class ApplicationContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,7 +19,7 @@ namespace ServiceFlow.Webhost.Migrations
                 .HasAnnotation("ProductVersion", "5.0.10")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("ServiceFlow.DataAccess.Attribute", b =>
+            modelBuilder.Entity("ServiceFlow.Common.DataModels.Attribute", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +45,7 @@ namespace ServiceFlow.Webhost.Migrations
                     b.ToTable("Mtr_Attribute");
                 });
 
-            modelBuilder.Entity("ServiceFlow.DataAccess.Reason", b =>
+            modelBuilder.Entity("ServiceFlow.Common.DataModels.Reason", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,7 +65,7 @@ namespace ServiceFlow.Webhost.Migrations
                     b.ToTable("Mtr_Reason");
                 });
 
-            modelBuilder.Entity("ServiceFlow.DataAccess.ReasonInStatus", b =>
+            modelBuilder.Entity("ServiceFlow.Common.DataModels.ReasonInStatus", b =>
                 {
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -85,7 +83,7 @@ namespace ServiceFlow.Webhost.Migrations
                     b.ToTable("Mpp_ReasonInStatus");
                 });
 
-            modelBuilder.Entity("ServiceFlow.DataAccess.Status", b =>
+            modelBuilder.Entity("ServiceFlow.Common.DataModels.Status", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -105,7 +103,7 @@ namespace ServiceFlow.Webhost.Migrations
                     b.ToTable("Mtr_Status");
                 });
 
-            modelBuilder.Entity("ServiceFlow.DataAccess.Workflow", b =>
+            modelBuilder.Entity("ServiceFlow.Common.DataModels.Workflow", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -125,7 +123,7 @@ namespace ServiceFlow.Webhost.Migrations
                     b.ToTable("Mtr_Workflow");
                 });
 
-            modelBuilder.Entity("ServiceFlow.DataAccess.WorkflowConfiguration", b =>
+            modelBuilder.Entity("ServiceFlow.Common.DataModels.WorkflowConfiguration", b =>
                 {
                     b.Property<Guid>("CurrentStatusId")
                         .HasColumnType("uniqueidentifier");
@@ -151,15 +149,15 @@ namespace ServiceFlow.Webhost.Migrations
                     b.ToTable("Mtr_WorkflowConfiguration");
                 });
 
-            modelBuilder.Entity("ServiceFlow.DataAccess.ReasonInStatus", b =>
+            modelBuilder.Entity("ServiceFlow.Common.DataModels.ReasonInStatus", b =>
                 {
-                    b.HasOne("ServiceFlow.DataAccess.Reason", "Reason")
+                    b.HasOne("ServiceFlow.Common.DataModels.Reason", "Reason")
                         .WithMany()
                         .HasForeignKey("ReasonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ServiceFlow.DataAccess.Status", "Status")
+                    b.HasOne("ServiceFlow.Common.DataModels.Status", "Status")
                         .WithMany()
                         .HasForeignKey("StatusId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -170,21 +168,21 @@ namespace ServiceFlow.Webhost.Migrations
                     b.Navigation("Status");
                 });
 
-            modelBuilder.Entity("ServiceFlow.DataAccess.WorkflowConfiguration", b =>
+            modelBuilder.Entity("ServiceFlow.Common.DataModels.WorkflowConfiguration", b =>
                 {
-                    b.HasOne("ServiceFlow.DataAccess.Status", "CurrentStatus")
+                    b.HasOne("ServiceFlow.Common.DataModels.Status", "CurrentStatus")
                         .WithMany()
                         .HasForeignKey("CurrentStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ServiceFlow.DataAccess.Status", "NextStatus")
+                    b.HasOne("ServiceFlow.Common.DataModels.Status", "NextStatus")
                         .WithMany()
                         .HasForeignKey("NextStatusId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ServiceFlow.DataAccess.Workflow", "Workflow")
+                    b.HasOne("ServiceFlow.Common.DataModels.Workflow", "Workflow")
                         .WithMany()
                         .HasForeignKey("WorkflowId")
                         .OnDelete(DeleteBehavior.Cascade)

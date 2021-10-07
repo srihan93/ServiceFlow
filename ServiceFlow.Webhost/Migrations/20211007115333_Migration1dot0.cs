@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ServiceFlow.Webhost.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Migration1dot0 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
