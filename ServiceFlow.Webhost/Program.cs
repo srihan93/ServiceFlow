@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
+using System;
 
 namespace ServiceFlow.Webhost
 {
@@ -15,9 +16,20 @@ namespace ServiceFlow.Webhost
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(config).CreateLogger();
 
-            Log.Information("App Started");
-            Log.Error("Error");
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                Log.Information("Hosting Starting");
+                CreateHostBuilder(args).Build().Run();
+                Log.Information("Hosting Stopped");
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly");
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
