@@ -3,7 +3,8 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Serilog;
+
 
 namespace ServiceFlow.Webhost.Controllers
 {
@@ -26,6 +27,7 @@ namespace ServiceFlow.Webhost.Controllers
         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
+            _logger.LogInformation("Hello");
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
